@@ -1,6 +1,6 @@
 <?php
-include 'includes/connect.php';
-include 'includes/wallet.php';
+//include 'includes/connect.php';
+//include 'includes/wallet.php';
 
 //	if($_SESSION['customer_sid']==session_id())
 //	{

@@ -1,11 +1,5 @@
 <?php
 include 'includes/connect.php';
-session_start();
-
-//
-//	if($_SESSION['admin_sid']==session_id())
-//	{
-//
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +30,6 @@ session_start();
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
      <style type="text/css">
   .input-field div.error{
     position: relative;
@@ -189,18 +182,12 @@ session_start();
       <!-- START CONTENT -->
       <section id="content">
 
-        <!--breadcrumbs start-->
-        
-        <!--breadcrumbs end-->
-
-
-        <!--start container-->
         <div class="container">
-          
+
 		  <form class="formValidate" id="formValidate" method="post" action="routers/menu-router.php" novalidate="novalidate">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="breadcrumbs-title">Edit Menu Items</h4>
+                <h4 class="breadcrumbs-title">Food menu </h4>
               </div>
               <div>
 				<table id="data-table-admin" class="responsive-table display table-border" cellspacing="0">
@@ -237,13 +224,14 @@ session_start();
 </table>
               </div>
 			  <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Modify
+                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                                  <a style="color:white;" href="index.php">Modify</a>
                                 <i class="mdi-content-send right"></i>
                               </button>
                             </div>
             </div>
 			</form>
-		  <form class="formValidate" id="formValidate1" method="post" action="routers/add-item.php" novalidate="novalidate" enctype="multipart/form-data">
+		  <form class="formValidate" id="formValidate1" method="post" action="routers/add-item.php" enctype="multipart/form-data">
             <div class="row">
               <div class="col s12 m4 l3">
                 <h4 class="header">Add Item</h4>
@@ -254,22 +242,39 @@ session_start();
                       <tr>
                         <th data-field="id">Name</th>
                         <th data-field="name">Item Price/Piece</th>
-                        <th data-field="image">Image</th>
+                        <th data-field="image">Quantity</th>
                       </tr>
                     </thead>
 
                     <tbody>
-				<?php
-					echo '<tr><td><div class="input-field col s12"><label for="name">Name</label>';
-					echo '<input id="name" name="name" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';
-					echo '<td><div class="input-field col s12 "><label for="price" class="">Price</label>';
-					echo '<input id="price" name="price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
+             <tr>
 
-					echo '<td><div class="input-field col s12 ">';
-					echo '
-					<input type="file" id="image" name="image" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';
-					echo '<td></tr>';
-				?>
+				    <td>
+                        <input type="text" name="name" required placeholder="Enter Name">
+                    </td>
+				    <td>
+                        <input type="number" name="price" required placeholder="Enter Price">
+                    </td>
+				    <td>
+                        <input type="number" name="quantity" required="" placeholder="Enter Quantity">
+                    </td>
+
+
+              </tr>
+                    <tr>
+                        <th >Category</th>
+                        <th >Image</th>
+                    </tr>
+                <tr>
+                    <td>
+                        <input required="" type="text" name="category" placeholder="Enter Category">
+                    </td>
+
+                    <td>
+                        <input type="file" required="" name="image">
+                    </td>
+                </tr>
+
                     </tbody>
 </table>
               </div>
@@ -279,9 +284,9 @@ session_start();
                               </button>
                             </div>
             </div>
-			</form>			
+			</form>
 
-            
+
           </div>
         </div>
         </div>
@@ -301,8 +306,8 @@ session_start();
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span>Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Aarons And sons</a> All rights reserved.</span>
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Aarons developers</a></span>
         </div>
     </div>
   </footer>
@@ -334,86 +339,9 @@ session_start();
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
-<!--	    <script type="text/javascript">-->
-<!--    $("#formValidate").validate({-->
-<!--        rules: {-->
-<!--			--><?php
-//			$result = mysqli_query($con, "SELECT * FROM items");
-//			while($row = mysqli_fetch_array($result))
-//			{
-//				echo $row["id"].'_name:{
-//				required: true,
-//				minlength: 5,
-//				maxlength: 20
-//				},';
-//				echo $row["id"].'_price:{
-//				required: true,
-//				min: 0
-//				},';
-//			}
-//		echo '},';
-//		?>
-//        messages: {
-//			<?php
-////			$result = mysqli_query($con, "SELECT * FROM items");
-////			while($row = mysqli_fetch_array($result))
-////			{
-////				echo $row["id"].'_name:{
-////				required: "Ener item name",
-////				minlength: "Minimum length is 5 characters",
-////				maxlength: "Maximum length is 20 characters"
-////				},';
-////				echo $row["id"].'_price:{
-////				required: "Ener price of item",
-////				min: "Minimum item price is Rs. 0"
-////				},';
-////			}
-////		echo '},';
-//		?>
-//        errorElement : 'div',
-//        errorPlacement: function(error, element) {
-//          var placement = $(element).data('error');
-//          if (placement) {
-//            $(placement).append(error)
-//          } else {
-//            error.insertAfter(element);
-//          }
-//        }
-//     });
-//    </script>
-<!--    <script type="text/javascript">-->
-    // $("#formValidate1").validate({
-    //     rules: {
-	// 	name: {
-	// 			required: true,
-	// 			minlength: 5
-	// 		},
-	// 	price: {
-	// 			required: true,
-	// 			min: 0
-	// 		},
-	// },
-    //     messages: {
-	// 	name: {
-	// 			required: "Enter item name",
-	// 			minlength: "Minimum length is 5 characters"
-	// 		},
-	// 	 price: {
-	// 			required: "Enter item price",
-	// 			minlength: "Minimum item price is Rs.0"
-	// 		},
-	// },
-	// 	errorElement : 'div',
-    //     errorPlacement: function(error, element) {
-    //       var placement = $(element).data('error');
-    //       if (placement) {
-    //         $(placement).append(error)
-    //       } else {
-    //         error.insertAfter(element);
-    //       }
-    //     }
-    //  });
-    </script>
+
+  </script>
+
 </body>
 
 </html>

@@ -235,7 +235,7 @@ include 'includes/wallet.php';
                                             </div>';
 								if(!preg_match('/^Cancelled/', $status)){
 									if($status != 'Delivered'){
-								echo '<form action="routers/cancel-order.php" method="post">
+								echo '<form action="routers/cancel-index.php" method="post">
 										<input type="hidden" value="'.$id.'" name="id">
 										<input type="hidden" value="Cancelled by Customer" name="status">	
 										<input type="hidden" value="'.$row['payment_type'].'" name="payment_type">											

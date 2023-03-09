@@ -131,21 +131,21 @@ include 'account/includes/connect.php';
           $sqlrun=mysqli_query($con,$sql);
           while ($row = mysqli_fetch_array($sqlrun)) {
               ?>
-              <div class="item">
+              <div style="border:1px solid grey;padding: 1px; border-radius: 7px;" class="item">
                   <div class="foodItem">
-                      <a href="food.php">
                           <img src="account/items/<?php echo $row['image']; ?>" width="100%" height="300">
-                      </a>
+
 
                   </div>
+                  <br>
                   <div class="link">
                       <div>
-                          <a style="width: 16rem;"  class="btn btn-danger w-75" href="account/order/order.php?id=<?php echo $row['id'] ?>&order_now=">
+                          <a style="width: 16rem;"  class="mt-2 btn btn-danger w-75" href="order.php?id=<?php echo $row['id'] ?>&order_now=">
                              Order Now
                           </a> </p>
                       </div>
                       <div>
-                          <a style="width: 16rem;"  class="btn btn-primary w-75" href="account/order/details.php?id=<?php echo $row['id'] ?>&view_details=">
+                          <a style="width: 16rem;"  class="btn btn-info" href="order_details.php?id=<?php echo $row['id'] ?>&order_now=">
                               View order
                           </a> </p>
                       </div>
