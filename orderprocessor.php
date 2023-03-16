@@ -1,0 +1,22 @@
+<?php
+include 'connection.php';
+session_start();
+if(!isset($_SESSION['user_id'])){
+    $_SESSION['login']='login to be able to order the item';
+    header('location:login.php');
+}
+
+if(isset($_POST['add_order'])){
+//    session_start();
+    $user_id=$_SESSION['user_id'];
+    $item_id=$_POST['id'];
+    $name=$_POST['name'];
+    $price=$_POST['price'];
+    $sql="insert into orders (item_id, name, price,user_id) values ('$item_id', '$name', '$price','$user_id')";
+    $sqlrun=mysqli_query($conn,$sql);
+    if($sqlrun){
+//        session_start();
+        $_SESSION['order']='Added to well cart successfully';
+        header('Location:food.php');
+    }
+}

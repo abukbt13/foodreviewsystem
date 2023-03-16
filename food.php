@@ -1,5 +1,6 @@
 <?php
-include 'account/includes/connect.php';
+include 'connection.php';
+session_start();
 ?>
 
 <!doctype html>
@@ -42,6 +43,18 @@ include 'account/includes/connect.php';
         display: flex;
         justify-content: space-between;
     }
+   .card{
+       position:fixed;
+       top:20rem;
+       left:50rem;
+    background-color:blue;
+       height:24rem;
+       width:41rem;
+       justify-content: center;
+       align-items: center;
+       display: flex;
+       flex-direction: column;
+   }
     @media screen and (max-width: 500px) and (min-width: 200px) {
         .fodsfromdb{
             margin-top:1rem;
@@ -76,6 +89,20 @@ include 'account/includes/connect.php';
     </div>
   </div>
 </div>
+    <?php
+    if(isset($_SESSION['order'])){
+        ?>
+        <div>
+            <div class="card bg-danger p-4">
+
+                <p class="text-center text-uppercase"><?php echo $_SESSION['order'] ?></p>
+                <a style="position: relative;right: 2rem;" class="btn btn-danger" href="food.php">Close</a>
+            </div>
+        </div>
+        <?php
+        unset($_SESSION['order']);
+    }
+    ?>
 
 <!--Header-->
 <header id="main-navigation">
@@ -88,7 +115,7 @@ include 'account/includes/connect.php';
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fixed-collapse-navbar" aria-expanded="false"> 
             <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> 
             </button>
-           <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="logo" class="img-responsive"></a>
+           <a class="navbar-brand" href="startindex.php"><img src="images/logo.png" alt="logo" class="img-responsive"></a>
          </div>
         
             <div id="fixed-collapse-navbar" class="navbar-collapse collapse navbar-right">
@@ -97,14 +124,15 @@ include 'account/includes/connect.php';
                    <a href="index.php">Home</a>
                    
                 </li>
-                <li><a href="food.html">Our Food</a></li>
+                <li><a href="food.php">Our Food</a></li>
                 
                 
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                   
-                <li><a href="./account/register.php">Order Now</a></li>
-                
+                <li><a href="confirmorder.php">Order Now</a></li>
+                  <li><a href="login.php">Login</a></li>
+                  <li><a href="register.php">REGISTER</a></li>
               </ul>
             </div>
          </nav>
@@ -128,25 +156,27 @@ include 'account/includes/connect.php';
           <?php
 
           $sql =  "SELECT *  FROM items";
-          $sqlrun=mysqli_query($con,$sql);
+          $sqlrun=mysqli_query($conn,$sql);
           while ($row = mysqli_fetch_array($sqlrun)) {
               ?>
               <div style="border:1px solid grey;padding: 1px; border-radius: 7px;" class="item">
                   <div class="foodItem">
-                          <img src="account/items/<?php echo $row['image']; ?>" width="100%" height="300">
+                      <p style="text-align: center; font-size: 19px; background-color: #0dcaf0;"><?php echo $row['name']; ?></p>
+                          <img src="Foods/fooditems/<?php echo $row['image']; ?>" width="100%" height="300">
 
 
                   </div>
                   <br>
                   <div class="link">
-                      <div>
-                          <a style="width: 16rem;"  class="mt-2 btn btn-danger w-75" href="order.php?id=<?php echo $row['id'] ?>&order_now=">
-                             Order Now
-                          </a> </p>
-                      </div>
+                          <form action="orderprocessor.php" method="post">
+                              <input type="number" hidden="" name="id" value="<?php echo $row['id']; ?>">
+                              <input type="number" hidden="" name="price" value="<?php echo $row['price']; ?>">
+                              <input type="text" hidden="" name="name" value="<?php echo $row['name']; ?>">
+                             <button style="width: 16rem;" name="add_order" class="btn btn-danger">Add order to cart</button>
+                          </form>
                       <div>
                           <a style="width: 16rem;"  class="btn btn-info" href="order_details.php?id=<?php echo $row['id'] ?>&order_now=">
-                              View order
+                              View order details
                           </a> </p>
                       </div>
                   </div>
@@ -205,7 +235,7 @@ include 'account/includes/connect.php';
         <h4 class="heading">Quick Links</h4>
         <hr class="half_space">
         <ul class="widget_links">
-          <li><a href="index.php">Home</a></li>
+          <li><a href="startindex.php">Home</a></li>
           <li><a href="food.html">Our Food</a></li>
           <li><a href="about.html">About Us</a></li>
           

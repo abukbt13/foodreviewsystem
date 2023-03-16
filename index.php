@@ -1,8 +1,5 @@
-<?php
-include 'account/includes/connect.php';
-//unset(sess)
-
-?>
+<?php session_start();
+include 'connection.php';?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -70,7 +67,7 @@ include 'account/includes/connect.php';
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <p class="pull-left hidden-xs">Aarons and sans Foods and Restaurant, the Best in Town</p>
+        <p class="pull-left hidden-xs">JKS Foods and Restaurant, the Best in Town</p>
         <p class="pull-right"><i class="fa fa-phone"></i>Order Online +91-892-808-5056</p>
       </div>
     </div>
@@ -88,23 +85,25 @@ include 'account/includes/connect.php';
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fixed-collapse-navbar" aria-expanded="false"> 
             <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> 
             </button>
-           <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" class="img-responsive"></a> 
+           <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" class="img-responsive">dfgh</a>
          </div>
         
             <div id="fixed-collapse-navbar" class="navbar-collapse collapse navbar-right">
               <ul class="nav navbar-nav">
                 <li>
-                   <a href="index.html">Home</a>
+                   <a href="index.php">Home</a>
                    
                 </li>
+
                 <li><a href="food.php">Our Food</a></li>
                 
                 
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                   
-                <li><a href="./account/register.php">Order Now</a></li>
-                
+                <li><a href="confirmorder.php">Order Now</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="register.php">REGISTER</a></li>
               </ul>
             </div>
          </nav>
@@ -267,10 +266,43 @@ include 'account/includes/connect.php';
 
 
 
+<!--Features Section-->
+<section class="feature_wrap padding-half" id="specialities">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-12 text-center">
+        <h2 class="heading ">Our &nbsp; Specialities</h2>
+        <hr class="heading_space">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6 feature text-center">
+        <i class="icon-glass"></i>
+        <h3><a href="./account/register.php">Dinner &amp; Dessert</a></h3>
+        <p> Enjoy Delicious Food!</p>
+      </div>
+      <div class="col-md-3 col-sm-6 feature text-center">
+        <i class="icon-coffee"></i>
+        <h3><a href="./account/register.php">Breakfast</a></h3>
+        <p> Enjoy Delicious Food!</p>
+      </div>
+      <div class="col-md-3 col-sm-6 feature text-center">
+        <i class="icon-glass"></i>
+        <h3><a href="./account/register.php">Ice Shakes</a></h3>
+        <p> Enjoy Delicious Food!</p>
+      </div>
+      <div class="col-md-3 col-sm-6 feature text-center">
+        <i class="icon-coffee"></i>
+        <h3><a href="./account/register.php">Beverges</a></h3>
+        <p> Enjoy Delicious Food!</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
 
 
 <!--Services plus working hours-->
-<!--################# from database foods###########-->
 <section id="services" class="padding-bottom">
   <div class="container">
     <div class="row">
@@ -323,11 +355,9 @@ include 'account/includes/connect.php';
         </div>
       </div>
       <div class="col-md-4">
-
         <h2 class="heading">Our &nbsp; Menu</h2>
         <hr class="heading_space">
         <ul class="menu_widget">
-<!--            #####################Price from db #################-->
           <li>Classic Nachos<span>INR 499.00</span></li>
           <li>Nachos Grande<span>INR 249.00</span></li>
           <li>Avocado Shell Stuffed<span>INR 150.00</span></li>
@@ -363,26 +393,27 @@ include 'account/includes/connect.php';
 </section>
 
 <div class="fodsfromdb">
-<?php
-//include 'account/includes/connect.php';
+    <?php
 
-$sql =  "SELECT *  FROM items limit 6";
-$sqlrun=mysqli_query($con,$sql);
-//echo mysqli_num_rows($sqlrun);
-while ($row = mysqli_fetch_array($sqlrun)) {
-    ?>
-    <div class="link">
-        <div class="foodItem">
-            <a href="food.php">
-                <img src="account/items/<?php echo $row['image']; ?>" width="100%" height="300">
-            </a>
+
+    $sql =  "SELECT *  FROM items limit 6";
+    $sqlrun=mysqli_query($conn,$sql);
+    //echo mysqli_num_rows($sqlrun);
+    while ($row = mysqli_fetch_array($sqlrun)) {
+        ?>
+        <div class="link">
+            <div class="foodItem">
+                <a href="food.php">
+                    <img src="Foods/fooditems/<?php echo $row['image']; ?>" width="100%" height="300">
+                </a>
+            </div>
         </div>
-    </div>
-<?php
-}
+        <?php
+    }
 
-?>
+    ?>
 </div>
+
 
 
 
@@ -421,86 +452,6 @@ while ($row = mysqli_fetch_array($sqlrun)) {
         </div>
       </div>
     </div>  
-  </div>
-</section>
-
-
-
-
-
-
-
-
-<!--Featured Receipes -->
-<section id="news" class="bg_grey padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-      <h2 class="heading">Featured &nbsp; Food &nbsp; Receipes</h2>
-      <hr class="heading_space">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="cheffs_wrap_slider">
-          <div id="news-slider" class="owl-carousel">
-            <div class="item">
-              <div class="news_content">
-               <img src="images/news-img3.jpg" alt="Docotor">
-               <div class="date_comment">
-                  <span>22<small>apr</small></span>
-                  <a href="#."><i class="icon-comment"></i> 5</a>
-               </div>
-               <div class="comment_text">
-                 <h3><a href="#.">Quesadillas Acapulco</a></h3>
-                 <p>Enjoy Delicious Food!</p>
-               </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="news_content">
-               <img src="images/news-img2.jpg" alt="Docotor">
-               <div class="date_comment">
-                  <span>22<small>apr</small></span>
-                  <a href="#."><i class="icon-comment"></i> 5</a>
-               </div>
-               <div class="comment_text">
-                 <h3><a href="#.">Barbecue Beef</a></h3>
-                 <p>Enjoy Delicious Food!</p>
-               </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="news_content">
-               <img src="images/news-img1.jpg" alt="Docotor">
-               <div class="date_comment">
-                  <span>22<small>apr</small></span>
-                  <a href="#."><i class="icon-comment"></i> 5</a>
-               </div>
-               <div class="comment_text">
-                 <h3><a href="#.">Mexican Taco</a></h3>
-                 <p>Enjoy Delicious Food!</p>
-               </div>
-              </div>
-            </div>
-            
-            <div class="item">
-              <div class="news_content">
-               <img src="images/food-1.jpg" alt="Docotor">
-               <div class="date_comment">
-                  <span>22<small>apr</small></span>
-                   <a href="#."><i class="icon-comment"></i> 5</a>
-               </div>
-               <div class="comment_text">
-                 <h3><a href="#.">Thai Chicken Chilly</a></h3>
-                 <p>Enjoy Delicious Food!</p>
-               </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -551,7 +502,7 @@ while ($row = mysqli_fetch_array($sqlrun)) {
         <hr class="half_space">
         <ul class="widget_links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="food.php">Our Food</a></li>
+          <li><a href="food.html">Our Food</a></li>
           <li><a href="about.html">About Us</a></li>
           
           <li><a href="faq.html">Faq's</a></li>

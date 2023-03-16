@@ -6,13 +6,13 @@ $server_pass = "Pass2022";
 $dbname = "foodorder";
 //$name = $_SESSION['name'];
 //$role = $_SESSION['role'];
-$con=new mysqli("$servername","$server_user","$server_pass","$dbname") or die("mysqli_error");
+$conn=new mysqli("$servername","$server_user","$server_pass","$dbname") or die("mysqli_error");
 
 if(isset($_GET['order_now'])){
     $id=$_GET['id'];
 }
 $sql="select * from items where id='$id'";
-$sqlrun=mysqli_query($con,$sql);
+$sqlrun=mysqli_query($conn,$sql);
 $items=mysqli_fetch_all($sqlrun,MYSQLI_ASSOC);
 foreach ($items as $item){
     $price=$item["price"];
@@ -32,6 +32,7 @@ foreach ($items as $item){
     <link rel="stylesheet" href="css/stylo.css">
 </head>
 <body>
+<?php include 'header.php'; ?>
 <style>
     .itemdetails{
         width:100vw;
@@ -53,29 +54,45 @@ foreach ($items as $item){
 <div class="itemdetails">
     <div class="item">
         <h4 style="text-align: center;text-transform: uppercase;"><?php echo $name; ?></h4>
-        <img src="account/items/<?php echo $image ?>" alt="" width="100%" height="300">
-        <div>
-            <a  class="mt-2 btn btn-danger w-100" href="order.php?id=<?php echo $row['id'] ?>&order_now=">
-                Order Now
-            </a>
+        <img src="Foods/fooditems/<?php echo $image ?>" alt="" width="100%" height="300">
+        <div class="d-flex align-items-center justify-content-center flex-row m-1">
+            <form action="orderprocessor.php" method="post">
+                <input type="number" hidden="" name="id" value="<?php echo $id; ?>">
+                 <input type="number" hidden="" name="price" value="<?php echo $price; ?>">
+                <input type="text"  hidden="" name="name" value="<?php echo $name; ?>">
+                <button  name="add_order" class="btn btn-danger  w-100">Add order to cart</button>
+            </form>
         </div>
-        <p class="text-center text-uppercase ">Our happy customers</p>
-        <hr>
+        <p class="text-center text-uppercase ">What our customers say about this food</p>
         <hr>
         <div class="show">
-            <p>Wow this food is amazing I really Enjoyed it made may day</p>
-        </div> <div class="show">
-            <p>
-                Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
-                Ab aliquam aut deleniti illum impedit incidunt officia possimus,
-                quas quidem, rerum sit suscipit, tempora unde veniam voluptate?
-                Aliquid amet at ducimus ex exercitationem iste, libero molestias
-                neque odio pariatur placeat porro quae quaerat reiciendis rerum sapiente, temporibus, voluptatum? Architecto dignissimos distinctio eveniet impedit inventore maiores modi molestias quisquam reprehenderit, sunt? Accusantium aliquid asperiores corporis culpa delectus distinctio fuga harum ipsum libero nam nesciunt nulla quaerat quidem repellat reprehenderit suscipit tempore, veritatis voluptate! Accusamus ad alias cum eaque facilis libero magni obcaecati reprehenderit sunt vel! Animi atque consectetur doloremque, sequi sit vel.</p>
+            <?php
+            $comment = "SELECT r.comment, r.date,r.time,r.user_id, u.profile_image 
+           FROM reviews r 
+           INNER JOIN items i ON i.id = r.food_id 
+           JOIN users u ON u.id = r.user_id 
+           WHERE r.food_id = '$id' 
+           ORDER BY r.time DESC ";
+            $commentsrun = mysqli_query($conn, $comment);
+            $num = mysqli_num_rows($commentsrun);
 
-            </p>
+            if($num>0){
+            while ($row = mysqli_fetch_array($commentsrun)) {
+                ?>
+           <div class="d-flex border-bottom flex-row align-items-center">
 
-            </p>
+                    <img style="border-radius: 100%;" src="profiles/<?php echo $row['profile_image']?>" width="100" height="100" alt="">
+                 <p><?php echo $row['comment'] ?><br><span class="bg-secondary text-white pe-2 py-1"><?php echo $row['date']?></span><span class="bg-secondary py-1 ps-4 text-white"><?php echo $row['time'] ?></span></p>
+
+
+                </div>
+
+           <?php
+            }}
+
+            ?>
+
+            <p>This food is yummy</p>
         </div>
     </div>
 
