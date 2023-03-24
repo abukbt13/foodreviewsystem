@@ -1692,9 +1692,9 @@
 			closeClick : true,      // if true, fancyBox will be closed when user clicks on the overlay
 			speedOut   : 200,       // duration of fadeOut animation
 			showEarly  : true,      // indicates if should be opened immediately or wait until the content is ready
-			css        : {},        // custom CSS properties
+			css        : {},        // custom mycss properties
 			locked     : !isTouch,  // if true, the content will be locked into overlay
-			fixed      : true       // if false, the overlay CSS position property will not be set to "fixed"
+			fixed      : true       // if false, the overlay mycss position property will not be set to "fixed"
 		},
 
 		overlay : null,      // current handle

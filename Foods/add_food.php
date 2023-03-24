@@ -6,10 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>header</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../mycss/style.css">
     <script src="../JS/app.js"></script>
 </head>
-<body>
+<body style="background-size: cover; background-image: url('fooditems/6997g.jpeg')">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -36,37 +36,45 @@
 </nav>
 <style>
     .content{
-        background-color: #0dcaf0;
+
         width: 100vw;
         height: 100vh;
+    }
+    .p{
+        color:yellow;
+        font-size: 18px;
     }
 </style>
 <form class="formValidate" id="formValidate1" method="post" action="foodprocessor.php" enctype="multipart/form-data">
     <div class="content d-flex align-items-center justify-content-center">
         <div class="thecontent">
-        <div class="">
-            <h4 class="header text-center">Add Item</h4>
+            <div class="form-group">
+                <h4 class="text-center text-secondary">Upload a Food Item here</h4>
+                <hr>
+            </div>
+        <div class="form-group">
+          <p class="text-center p">Name of the Food</p>
+            <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;"type="text" name="name" required class="form-control"  placeholder="Enter Name">
         </div>
-       <div class="form-group"></div>
-        <input type="text" name="name" required class="form-control"  placeholder="Enter Name">
-           <div class="form-group">
-               <label>Price</label><br>
+       <div class="form-group">
+               <p class="text-center p">Price</p>
                 <input type="number" name="price" class="form-control" required placeholder="Enter Price">
-           </div>
+
+       </div>
             <div class="form-group">
-                <label>quantity</label><br>
-                <input type="number" name="quantity" class="form-control" required="" placeholder="Enter Quantity">
+                <p class="text-center p">Quantity</p>
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="number" name="quantity" class="form-control" required="" placeholder="Enter Quantity">
             </div>
             <div class="form-group">
-                <label>category</label><br>
-                 <input required="" type="text" name="category"class="form-control"  placeholder="Enter Category">
+                <p class="text-center p">Category of Food</p>
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" required="" type="text" name="category"class="form-control"  placeholder="Enter Category">
             </div>
             <div class="form-group">
-                <label class="ms-4">Image</label><br>
-              <input type="file" required="" class="form-control" name="image">
+                <p class="text-center p">Food Image</p>
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="file" required="" class="form-control" name="image">
             </div>
-            <div class="input-field col s12">
-                <button class="btn btn-success" type="submit" name="add_item">Add food Item
+            <div class="form-group d-flex justify-content-center mt-1">
+                <button style="background: #ddd;" class="btn  w-100" type="submit" name="add_item">Add food Item
 
                 </button>
             </div>

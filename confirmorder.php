@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id'])){
 $user_id=$_SESSION['user_id'];
 
 
-$data="select * from orders where user_id='$user_id' && status =0";
+$data="select * from orders where user_id='$user_id' && status='0'";
 $datarun=mysqli_query($conn,$data);
 $rows=mysqli_fetch_all($datarun,MYSQLI_ASSOC);
 $num=mysqli_num_rows($datarun);
@@ -87,7 +87,7 @@ include 'header.php';
                     <input type="time"  name="time" >
                 </span>
                 </div>
-                <button name="confirm_order" class="btn my-2 btn-primary w-75">Confirm Order</button>
+                <button type="submit" name="confirm_order" class="btn my-2 btn-primary w-75">Confirm Order</button>
 
                     </div>';
                }

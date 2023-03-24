@@ -5,12 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>header</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <title>Aaron foods</title>
+    <link rel="stylesheet" href="mycss/style.css">
     <script src="JS/app.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+<nav style="background-color: #ddd;" class="navbar navbar-expand-lg ">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Aarons and sons invest</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,10 +33,7 @@
 
 
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
         </div>
     </div>
 </nav>

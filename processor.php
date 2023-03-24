@@ -103,3 +103,29 @@
     header("Location:login.php");
     }
     }
+
+    if(isset($_POST['confirm_order'])){
+        session_start();
+        $user_id=$_SESSION['user_id'];
+        $totalminprice=$_POST['totalminprice'];
+        $transactionid=$_POST['transactionid'];
+        $date = date('d-m-y');
+        $time = date('H:i:s');
+        if($_POST['time']==null){
+            $time = date('H:i:s');
+        }
+        else{
+            $time =$_POST['time'];
+        }
+        $sql="update orders  set  transaction_id = '$transactionid', status='1' where user_id = '$user_id' and status='0'";
+        $sqlrun=mysqli_query($conn,$sql);
+        if($sqlrun){
+            $save="insert into ordered_foods  (user_id,transaction_id,amount,time,date) values('$user_id','$transactionid','$totalminprice','$time','$date')";
+            $saverun=mysqli_query($conn,$save);
+            if($saverun){
+                $_SESSION['status']="You have ordered food successfully";
+                header("location:../dashboard.php");
+            }
+        }
+
+    }

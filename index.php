@@ -67,8 +67,8 @@ include 'connection.php';?>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <p class="pull-left hidden-xs">JKS Foods and Restaurant, the Best in Town</p>
-        <p class="pull-right"><i class="fa fa-phone"></i>Order Online +91-892-808-5056</p>
+        <p class="pull-left hidden-xs">Aaron and sons Online food, the Best in Town</p>
+        <p class="pull-right"><i class="fa fa-phone"></i>Order Online +254700907765</p>
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@ include 'connection.php';?>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fixed-collapse-navbar" aria-expanded="false"> 
             <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> 
             </button>
-           <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" class="img-responsive">dfgh</a>
+           <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="logo" class="img-responsive"></a>
          </div>
         
             <div id="fixed-collapse-navbar" class="navbar-collapse collapse navbar-right">
@@ -162,7 +162,7 @@ include 'connection.php';?>
                            data-mask_out="x:0;y:0;s:inherit;e:inherit;" 
                           data-start="1200"
                            style="z-index: 12;">
-                       <a href="./account/register.php" class="btn-common btn-white page-scroll">Order Now</a>
+                       <a href="confirmorder.php" class="btn-common btn-white page-scroll">Order Now</a>
                        </div>
                         
                        
@@ -207,7 +207,7 @@ include 'connection.php';?>
                            data-mask_out="x:0;y:0;s:inherit;e:inherit;" 
                           data-start="1200"
                            style="z-index: 12;">
-                          <a href="#specialities" class="btn-common btn-white page-scroll">Learn &nbsp; More</a> &nbsp; <a href="#order-form" class="btn-common btn-orange page-scroll">Order &nbsp; Now</a>
+                          <a href="about.html" class="btn-common btn-white page-scroll">Learn &nbsp; More</a> &nbsp; <a href="confirmorder.php" class="btn-common btn-orange page-scroll">Order &nbsp; Now</a>
                        </div>  
                             
                             
@@ -228,7 +228,7 @@ include 'connection.php';?>
                           data-splitin="none" 
                           data-splitout="none" 
                           style="z-index: 6;">
-                          <span class="small_title">We Prepare</span> <br> Fresh &nbsp; Food &nbsp; <span class="color">Vegies</span>
+                          <span class="small_title">We sell </span> <br> Fresh &nbsp; Food &nbsp; <span class="color">Vegies</span>
                         </h1>
                         <p class="tp-caption tp-resizeme"
                           data-x="right" data-hoffset="" 
@@ -253,7 +253,7 @@ include 'connection.php';?>
                            data-mask_out="x:0;y:0;s:inherit;e:inherit;" 
                           data-start="1200"
                            style="z-index: 12;">
-                       <a href="./account/register.php" class="btn-common btn-white page-scroll">Order Now</a>
+                       <a href="confirmorder.php" class="btn-common btn-white page-scroll">Order Now</a>
                        </div>  
                             </li>
 							<!-- SLIDE  -->
@@ -278,22 +278,22 @@ include 'connection.php';?>
     <div class="row">
       <div class="col-md-3 col-sm-6 feature text-center">
         <i class="icon-glass"></i>
-        <h3><a href="./account/register.php">Dinner &amp; Dessert</a></h3>
+        <h3><a href="register.php">Dinner &amp; Dessert</a></h3>
         <p> Enjoy Delicious Food!</p>
       </div>
       <div class="col-md-3 col-sm-6 feature text-center">
         <i class="icon-coffee"></i>
-        <h3><a href="./account/register.php">Breakfast</a></h3>
+        <h3><a href="register.php">Breakfast</a></h3>
         <p> Enjoy Delicious Food!</p>
       </div>
       <div class="col-md-3 col-sm-6 feature text-center">
         <i class="icon-glass"></i>
-        <h3><a href="./account/register.php">Ice Shakes</a></h3>
+        <h3><a href="register.php">Ice Shakes</a></h3>
         <p> Enjoy Delicious Food!</p>
       </div>
       <div class="col-md-3 col-sm-6 feature text-center">
         <i class="icon-coffee"></i>
-        <h3><a href="./account/register.php">Beverges</a></h3>
+        <h3><a href="register.php">Beverges</a></h3>
         <p> Enjoy Delicious Food!</p>
       </div>
     </div>
@@ -315,9 +315,9 @@ include 'connection.php';?>
             <div class="item_inner">
             <div class="image">
               <img src="images/food-1.jpg" alt="Services Image">
-              <a  href="./account/register.php"></a>
+              <a  href="register.php"></a>
             </div>
-              <h3><a href="./account/register.php">Thai Chicken Chilly</a></h3>
+              <h3><a href="register.php">Thai Chicken Chilly</a></h3>
               <p>Enjoy Delicious Food!</p>
             </div>
           </div>
@@ -325,9 +325,9 @@ include 'connection.php';?>
             <div class="item_inner">
               <div class="image">
               <img src="images/food-2.jpg" alt="Services Image">
-              <a  href="./account/register.php"></a>
+              <a  href="register.php"></a>
               </div>
-              <h3><a href="./account/register.php">Celeriac Soup & Beer</a></h3>
+              <h3><a href="register.php">Celeriac Soup & Beer</a></h3>
               <p>Enjoy Delicious Food!</p>
             </div>
           </div>
@@ -335,9 +335,9 @@ include 'connection.php';?>
             <div class="item_inner">
               <div class="image">
               <img src="images/food-3.jpg" alt="Services Image">
-              <a  href="./account/register.php"></a>
+              <a  href="register.php"></a>
               </div>
-              <h3><a href="./account/register.php">Tex Mex Chicken</a></h3>
+              <h3><a href="register.php">Tex Mex Chicken</a></h3>
               <p>Enjoy Delicious Food!</p>
             </div>
           </div>
@@ -345,9 +345,9 @@ include 'connection.php';?>
             <div class="item_inner">
               <div class="image">
               <img src="images/food-4.jpg" alt="Services Image">
-              <a  href="./account/register.php"></a>
+              <a  href="register.php"></a>
               </div>
-              <h3><a href="./account/register.php">Baked Potato Jackets</a></h3>
+              <h3><a href="register.php">Baked Potato Jackets</a></h3>
               <p>Enjoy Delicious Food!</p>
             </div>
           </div>
@@ -384,7 +384,7 @@ include 'connection.php';?>
          <div class="text-center">
          <h2 class="heading_space">HOT Deal of the Day</h2>
          <p class="heading_space detail">Enjoy Delicious Food!</p>
-         <a href="./account/register.php" class="btn-common-white page-scroll">Order Now</a>
+         <a href="confirmorder.php" class="btn-common-white page-scroll">Order Now</a>
          </div>          
       </div>
       <div class="col-md-2"></div>

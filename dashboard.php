@@ -85,18 +85,17 @@ include 'header.php';
     <style>
         .body{
             height: 90vh;
-            background-color:#DED8D7;
+            background-color:#ffD8D7;
             padding:0rem 0rem 0rem 2rem;
         }
         .main_content{
-            background-color: #FFFF;
+            /*background-color: #d2d;*/
             height:89vh;
 
         }
         .sidebar{
             width:16rem;
             height: 85vh;
-            background-color: #fff3cd;
         }
         .contents li{
             padding:0.2rem 0.2rem 0.2rem 0.2rem;
@@ -116,34 +115,30 @@ include 'header.php';
             width: 22rem;
             border:solid 1px #faa;
         }
-        .bids{
-            display:none;
+        li{
+            margin: 1rem;
         }
-        .successbids{
-            display:none;
+        li a{
+            color: black;
         }
-        .block{display: block;}
+
     </style>
     <div class="main_content d-flex">
         <i style="font-size: 29px;" id="bar" class="d-block d-md-none d-lg-none fa fa-bars fa-lg" aria-hidden="true"></i>
         <div id="sidebar" class="sidebar d-none d-md-block d-lg-block" >
             <p style="text-align: center; margin-left: 1rem;padding-top:0.5rem;text-transform: uppercase;">Dashboard</p>
-            <hr>
             <div class="profile d-flex align-items-center">
                 <img style='border-radius: 50%;' src='profiles/<?php echo$profile_image ?>' alt='Uploadprofile' width='100' height='100'>
                 <p style="text-align: center; margin-left: 1rem;margin-top: 1rem;text-transform: uppercase;"><?php echo $username; ?></p>
             </div>
-            <hr>
             <div class="contents ms-3">
-                <li id="profile" class="list-unstyled my-2" id="profile"><a class="text-decoration-none">View My profile</a></li>
-
-                <li id="bids" class="list-unstyled my-2" id="profile"><a class="text-decoration-none">Active Bids</a></li>
-                <li id="successbids" class="list-unstyled my-2" id="profile"><a class="text-decoration-none" >Successfull Bids</a></li>
+                <li id="profile" class="list-unstyled my-2" id="profile"><a class="text-decoration-none">My profile</a></li>
+                <li id="orders" class="list-unstyled my-2" id="orders"><a class="text-decoration-none">My Orders</a></li>
 
             </div>
         </div>
         <div class="content">
-            <div id="profile_content" class="profile_content">
+            <div id="profile_content" style="display: none;" class="profile_content">
                 <form  action="dashboard.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" name="image" hidden="" value="<?php echo $profile_image; ?>">
@@ -177,7 +172,52 @@ include 'header.php';
                     </div>
                 </form>
             </div>
+            <div class="myorders" id="show_orders">
+                <h3>My orders</h3>
+                <table class="table table-responsive-sm table-primary table-hover table-bordered">
 
+                    <tbody>
+
+
+
+
+
+                 <table class="table table-responsive-sm table-primary table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>Transaction id</th>
+                <th>Total amount</th>
+                <th>Date of order</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+               $data="select * from ordered_foods where user_id='$user_id'";
+                    $datarun=mysqli_query($conn,$data);
+                    $rows=mysqli_fetch_all($datarun,MYSQLI_ASSOC);
+//                    $num=mysqli_num_rows($datarun);
+//                    $totalminprice =0;
+//                    $transactionid=time();
+                    foreach ($rows as $row){
+                    echo'
+                <tr>
+                <td>'.$row['transaction_id'].'</td>
+                <td>'.$row['amount'].'</td>
+                <td>'.$row['date'].'</td>
+                <td>
+                    <a style="background-color: blue;color: white;text-decoration: none;padding: 0.5rem;" href="http://localhost/Online-Food-Ordering/customer/my_orders.php?transaction_id='.$row['transaction_id'].'&view_myorders=">View this order</a>
+                 </tr>';
+                    ;
+                    }
+
+                  ?>
+            </tbody>
+            </table>
+                    </tbody>
+                </table>
+
+            </div>
 
         </div>
     </div>
@@ -189,28 +229,14 @@ include 'header.php';
     const profile_content=document.getElementById("profile_content");
     profile.addEventListener('click', ()=>{
         profile_content.style.display="block";
-        bids_content.style.display="block";
-        success_bids.style.display="none";
-        bids_content.style.display="none";
+        show_orders.style.display="none";
     })
-    const bids=document.getElementById("bids")
-    const bids_content=document.getElementById("bids_content")
-    bids.addEventListener('click', ()=>{
-        bids_content.style.display="block";
-        success_bids.style.display="none";
+    const orders=document.getElementById("orders")
+    const show_orders=document.getElementById("show_orders")
+    orders.addEventListener('click', ()=>{
+        show_orders.style.display="block";
         profile_content.style.display="none";
     })
-    const successbids=document.getElementById("successbids")
-    const success_bids=document.getElementById("success_bids")
-    successbids.addEventListener('click', ()=>{
-        success_bids.style.display="block";
-        bids_content.style.display="none";
-        profile_content.style.display="none";
-    })
-    const bar=document.getElementById("bar")
-    const sidebar=document.getElementById("sidebar")
-    bar.addEventListener('click', ()=>{
-        sidebar.classList.toggle("d-none");
-    })
+
 </script>
 </div>
