@@ -74,7 +74,7 @@ include '../connection.php';
             <th>Stock</th>
             <th colspan="2">Operation</th>
         </tr>
-        </thead>
+       </thead>
         <tbody>
         <?php
         $orders="select * from items";

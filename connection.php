@@ -2,7 +2,7 @@
 //session_start();
 $servername = "localhost";
 $server_user = "root";
-$server_pass = "Pass2022";
+$server_pass = "";
 $dbname = "foodorder";
 //$name = $_SESSION['name'];
 //$role = $_SESSION['role'];

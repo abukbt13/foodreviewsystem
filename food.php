@@ -43,18 +43,7 @@ session_start();
         display: flex;
         justify-content: space-between;
     }
-   .card{
-       position:fixed;
-       top:20rem;
-       left:50rem;
-    background-color:blue;
-       height:24rem;
-       width:41rem;
-       justify-content: center;
-       align-items: center;
-       display: flex;
-       flex-direction: column;
-   }
+
     @media screen and (max-width: 500px) and (min-width: 200px) {
         .fodsfromdb{
             margin-top:1rem;
@@ -92,13 +81,17 @@ session_start();
     <?php
     if(isset($_SESSION['order'])){
         ?>
-        <div>
-            <div class="card bg-danger p-4">
 
-                <p class="text-center text-uppercase"><?php echo $_SESSION['order'] ?></p>
-                <a style="position: relative;right: 2rem;" class="btn btn-danger" href="food.php">Close</a>
+            <div style="display: flex; padding-right: 2rem; background: #0f5132;padding-left: 2rem; align-items: center; justify-content: space-between;" class="">
+                <div class="">
+                    <p style="font-size: 27px;" class="text-center p-3 bg-secondary text-uppercase"><?php echo $_SESSION['order'] ?></p>
+
+                </div>
+                <div class="pe-4">
+                  <a class="btn btn-primary   my-2" href="food.php">Close</a>
+              </div>
             </div>
-        </div>
+
         <?php
         unset($_SESSION['order']);
     }

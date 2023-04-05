@@ -21,7 +21,7 @@ if (isset($_POST['forgetpassword'])) {
                     <h1>AArons food ordering app</h1>
                     <p>We are writing this message because you requested a password reset</p>
                     <p>Your otp is '.$otp.'</p>
-                     <a style="background-color: blue;color: white;text-decoration: none;padding: 0.5rem;" href="http://localhost/Online-Food-Ordering/resetpassword.php?email='.$email.'&otp='.$otp.'&searchdetails=">Click here to reset yourpassword</a>
+                     <a style="background-color: blue;color: white;text-decoration: none;padding: 0.5rem;" href="http://localhost/foodreviewsystem/resetpassword.php?email='.$email.'&otp='.$otp.'&searchdetails=">Click here to reset yourpassword</a>
                 </div>';
 
 
@@ -35,8 +35,9 @@ if (isset($_POST['forgetpassword'])) {
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->Username="abukbt13@gmail.com";
-        $mail->Password="rsaltaemqpgmtcxl";
+
+        $mail->Username="infortechnologyss@gmail.com";
+        $mail->Password="vdidsmvciwgoxtvp";
 
 //    $mail->setFrom($email,$name);
         $mail->addAddress($email,$name);
@@ -90,7 +91,7 @@ if (isset($_POST['resetpassword'])) {
             session_start();
             $_SESSION['status'] = "Password changed successfully";
 
-            header("location:signin.php");
+            header("location:login.php");
         }
         else{
             session_start();

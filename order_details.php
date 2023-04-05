@@ -1,13 +1,5 @@
 <?php
-
-$servername = "localhost";
-$server_user = "root";
-$server_pass = "Pass2022";
-$dbname = "foodorder";
-//$name = $_SESSION['name'];
-//$role = $_SESSION['role'];
-$conn=new mysqli("$servername","$server_user","$server_pass","$dbname") or die("mysqli_error");
-
+include 'connection.php';
 if(isset($_GET['order_now'])){
     $id=$_GET['id'];
 }
@@ -67,12 +59,12 @@ foreach ($items as $item){
         <hr>
         <div class="show">
             <?php
-            $comment = "SELECT r.comment, r.date,r.time,r.user_id, u.profile_image 
+            $comment = "SELECT r.comment,r.time,r.date, r.user_id, u.profile_image 
            FROM reviews r 
            INNER JOIN items i ON i.id = r.food_id 
            JOIN users u ON u.id = r.user_id 
            WHERE r.food_id = '$id' 
-           ORDER BY r.time DESC ";
+           ORDER BY r.date DESC, r.time DESC";
             $commentsrun = mysqli_query($conn, $comment);
             $num = mysqli_num_rows($commentsrun);
 
@@ -91,8 +83,21 @@ foreach ($items as $item){
             }}
 
             ?>
+            <div class="d-flex border-bottom flex-row align-items-center">
 
-            <p>This food is yummy</p>
+                <img style="border-radius: 100%;" src="profiles/user.jpg" width="100" height="100" alt="">
+                <p> This food is yummy I reaaly like<br><span class="bg-secondary py-1 ps-4 text-white">06:32</span></p>
+
+
+            </div>
+            <div class="d-flex border-bottom flex-row align-items-center">
+
+                <img style="border-radius: 100%;" src="profiles/user2.jpg" width="100" height="100" alt="">
+                <p> This food is yummy I reaaly like<br><span class="bg-secondary py-1 ps-4 text-white">05:32</span></p>
+
+
+            </div>
+
         </div>
     </div>
 

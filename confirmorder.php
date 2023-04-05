@@ -76,6 +76,7 @@ include 'header.php';
 
                if($num=='0'){
                    echo '<h2>Start ordering for items before you checkout </h2>';
+                   echo '<a href="food.php">shop now</a>';
                }
                else{
                    echo '<div class="d-flex mt-4 flex-column align-items-center justify-content-center">

@@ -103,7 +103,7 @@ while($row=mysqli_fetch_assoc($ordersrun)){
                 <td>'.$row['amount'].'</td>
                 <td>'.$row['date'].'</td>
                 <td>
-                    <a class="btn btn-success" href="http://localhost/Online-Food-Ordering/customer/my_orders.php?transaction_id='.$row['transaction_id'].'&view_myorders=">View this order</a>
+                    <a class="btn btn-success" href="http://localhost:81/foodreviewsystem/customer/my_orders.php?transaction_id='.$row['transaction_id'].'&view_myorders=">View this order</a>
                  </tr>
            ';
         }

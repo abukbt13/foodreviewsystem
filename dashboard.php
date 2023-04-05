@@ -206,7 +206,7 @@ include 'header.php';
                 <td>'.$row['amount'].'</td>
                 <td>'.$row['date'].'</td>
                 <td>
-                    <a style="background-color: blue;color: white;text-decoration: none;padding: 0.5rem;" href="http://localhost/Online-Food-Ordering/customer/my_orders.php?transaction_id='.$row['transaction_id'].'&view_myorders=">View this order</a>
+                    <a style="background-color: blue;color: white;text-decoration: none;padding: 0.5rem;" href="http://localhost:81/foodreviewsystem/customer/my_orders.php?transaction_id='.$row['transaction_id'].'&view_myorders=">View this order</a>
                  </tr>';
                     ;
                     }

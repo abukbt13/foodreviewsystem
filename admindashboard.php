@@ -34,6 +34,21 @@ span{
 }
 
 </style>
+<?php
+if(isset($_SESSION['status'])){
+    ?>
+
+    <div style="display: flex; padding-right: 2rem; background: #0f5132;padding-left: 2rem; align-items: center; justify-content: space-between;" class="">
+        <div class="">
+            <p style="font-size: 27px;" class="text-center p-3 bg-secondary text-uppercase"><?php echo $_SESSION['status'] ?></p>
+
+        </div>
+    </div>
+
+    <?php
+    unset($_SESSION['status']);
+}
+?>
 <div class="mainbody d-flex">
     <div class="sidebar">
        <h3 class="text-center text-primary">Dashboard</h3>
@@ -56,7 +71,14 @@ span{
        <div class="form-group ms-4">
             <h4>Reviews</h4>
             <div class="link">
-             <span class="">   <a href="" >Reviews</a></span><br><br>
+             <span class="">   <a href="showreviews.php" >Reviews</a></span><br><br>
+            </div>
+
+        </div>
+        <div class="form-group ms-4">
+            <h4>Reports</h4>
+            <div class="link">
+             <span class="">   <a href="reports.php" >Generate reports</a></span><br><br>
             </div>
 
         </div>
@@ -88,7 +110,7 @@ span{
                     <td><?php echo date('H:i:s', strtotime($rows['time'] . ' +1 hour')) ?></td>
 
                     <td>
-                        <a class="btn btn-success" href="http://localhost/Online-Food-Ordering/Foods/view_orders.php?transaction_id=<?php echo $rows['transaction_id']?>&email=<?php echo $rows['email']?>&viewdetails=">View</a>
+                        <a class="btn btn-success" href="http://localhost:81/foodreviewsystem/Foods/view_orders.php?transaction_id=<?php echo $rows['transaction_id']?>&email=<?php echo $rows['email']?>&viewdetails=">View</a>
                 </tr>
                 <?php
             }

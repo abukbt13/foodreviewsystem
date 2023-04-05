@@ -3,56 +3,65 @@
     if(isset($_POST["register"])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $password =$_POST['password'];
     $time=time();
+        $pattern = "/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/";
+        if (preg_match($pattern, $password)) {
+            $sql2 = "select username from users where email='$email'";
+            $result2 = mysqli_query($conn, $sql2);
+            $count2 = mysqli_num_rows($result2);
+            if ($username == "" || $password == "" || $email == "") {
+                session_start();
+                $_SESSION['register'] = 'All inputs are required';
+                header("Location:register.php");
+                die();
+            } else {
 
-    $sql2 = "select username from users where email='$email'";
-    $result2 = mysqli_query($conn, $sql2);
-    $count2 = mysqli_num_rows($result2);
-    if ($username == "" || $password == "" || $email == "") {
-    session_start();
-    $_SESSION['register'] = 'All inputs are required';
-    header("Location:register.php");
-    die();
-    } else {
-
-    if ($count2 > 0) {
-    session_start();
-    $_SESSION['register'] = 'Email already exist';
-    header("location:register.php");
-    die();
-    }
-    else {
-    $save = "insert into users (username,email,password) values('$username','$email','$password')";
-    $res = mysqli_query($conn, $save);
-    if ($res) {
-    $find = "select * from users where email='$email'";
-    $retrieve = mysqli_query($conn, $find);
-    $users = mysqli_fetch_all($retrieve, MYSQLI_ASSOC);
-
-
-    //the password was correct
-    foreach ($users as $user) {
-    $user_id = $user['id'];
-    $role = $user['role'];
-    $username = $user['username'];
-    }
+                if ($count2 > 0) {
+                    session_start();
+                    $_SESSION['register'] = 'Email already exist';
+                    header("location:register.php");
+                    die();
+                }
+                else {
+                    $save = "insert into users (username,email,password) values('$username','$email','$password')";
+                    $res = mysqli_query($conn, $save);
+                    if ($res) {
+                        $find = "select * from users where email='$email'";
+                        $retrieve = mysqli_query($conn, $find);
+                        $users = mysqli_fetch_all($retrieve, MYSQLI_ASSOC);
 
 
-    session_start();
-    $_SESSION['status'] = 'SUccessfully registered';
-    $_SESSION['username'] = $username;
-    $_SESSION['user_id'] =  $user_id;
-    $_SESSION['role'] = $role;
-    header("location:dashboard.php");
-    }
-    else {
-    session_start();
-    $_SESSION['register'] = 'Something went wrong';
-    header("location:register.php");
-    }
-    }
-    }
+                        //the password was correct
+                        foreach ($users as $user) {
+                            $user_id = $user['id'];
+                            $role = $user['role'];
+                            $username = $user['username'];
+                        }
+
+
+                        session_start();
+                        $_SESSION['status'] = 'SUccessfully registered';
+                        $_SESSION['username'] = $username;
+                        $_SESSION['user_id'] =  $user_id;
+                        $_SESSION['role'] = $role;
+                        header("location:dashboard.php");
+                    }
+                    else {
+                        session_start();
+                        $_SESSION['register'] = 'Something went wrong';
+                        header("location:register.php");
+                    }
+                }
+            }
+
+        }
+        else {
+            session_start();
+            $_SESSION['register'] = 'Create a strong password with eight or more characters wit one Upercase letter or more and one or more lowercase';
+            header("location:register.php");
+        }
+
 
     }
 

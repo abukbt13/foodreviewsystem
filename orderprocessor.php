@@ -12,7 +12,9 @@ if(isset($_POST['add_order'])){
     $item_id=$_POST['id'];
     $name=$_POST['name'];
     $price=$_POST['price'];
-    $sql="insert into orders (item_id, name, price,user_id) values ('$item_id', '$name', '$price','$user_id')";
+    $date = date('Y-m-d');
+
+    $sql="insert into orders (item_id, name, price,user_id,date) values ('$item_id', '$name', '$price','$user_id','$date')";
     $sqlrun=mysqli_query($conn,$sql);
     if($sqlrun){
 //        session_start();

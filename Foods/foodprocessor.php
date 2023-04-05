@@ -7,7 +7,7 @@ if(!isset($_SESSION['user_id'])){
     header("location:index.php");
 }
 if(isset($_POST['add_item'])){
-    session_start();
+//    session_start();
     $user_id=$_SESSION['user_id'];
 $name=$_POST['name'];
 $price=$_POST['price'];
@@ -18,7 +18,21 @@ $filename=$_FILES['image']['name'];
 $filetmp=$_FILES['image']['tmp_name'];
 
 $photo_new_name= rand(10,11111).$filename;
+    $array = explode(".", $filename);
+    $file_ext = strtolower(end($array));
 
+    $allowed_exts = array("jpg", "jpeg", "png", "gif");
+
+// Check if the file extension is allowed
+    if (in_array($file_ext, $allowed_exts)) {
+        echo "nice";
+//        die();
+    }
+    else{
+        $_SESSION['status']="Ensure the file needed is an image";
+        header("location:../admindashboard.php");
+        die();
+    }
 
 $sql = "INSERT INTO items (name,price,category,quantity,image,user_id) values ('$name','$price','$category','$quantity','$photo_new_name','$user_id')";
 $sql_run = mysqli_query($conn,$sql);
@@ -57,13 +71,15 @@ $photo_new_name= rand(10,11111).$filename;
 
 }
 else {
+
     $sql = "update items set name='$name', price='$price',category='$category',quantity='$quantity',image='$photo_new_name',user_id='$user_id' where id='$id'";
     $sql_run = mysqli_query($conn,$sql);
     if ($sql_run){
-        unlink($fullpath);
+//        unlink($fullpath);
         move_uploaded_file($filetmp,"fooditems/".  $photo_new_name);
         $_SESSION['status']="You have successfully added an item";
         header("location:../admindashboard.php");
+}
 }
 }
 if(isset($_POST['confirm_order'])){
@@ -100,7 +116,7 @@ if(isset($_POST['delete_food'])){
     }
 
 }
-}
+
 
 if(isset($_POST['clear_order'])) {
     $transaction_id = $_POST['transaction_id'];

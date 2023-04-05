@@ -1,13 +1,6 @@
 <?php
 
-$servername = "localhost";
-$server_user = "root";
-$server_pass = "Pass2022";
-$dbname = "foodorder";
-//$name = $_SESSION['name'];
-//$role = $_SESSION['role'];
-$con=new mysqli("$servername","$server_user","$server_pass","$dbname") or die("mysqli_error");
-
+include 'connection.php';
 if(isset($_GET['order_now'])){
     $id=$_GET['id'];
 }
