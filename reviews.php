@@ -60,10 +60,10 @@ include "header.php";
 if(isset($_SESSION['review'])){
     ?>
     <div>
-        <div class=" bg-danger p-4">
+        <div class="d-flex bg-success justify-content-between align-content-center p-2">
 
             <p class="text-center text-uppercase"><?php echo $_SESSION['review'] ?></p>
-            <a style="position: relative;right: 2rem;" class="btn btn-danger" href="food.php">Close</a>
+            <a class="btn btn-danger float-end" href="food.php">Close</a>
         </div>
     </div>
     <?php
@@ -73,7 +73,7 @@ if(isset($_SESSION['review'])){
       <div   class="fodsfromdb">
           <?php
 
-          $sql =  "SELECT i.name, i.id ,i.price,i.image FROM items i INNER JOIN orders o ON o.item_id = i.id WHERE o.user_id = '$user_id' ";
+          $sql =  "SELECT i.name, i.id ,i.price,i.image,o.status FROM items i INNER JOIN orders o ON o.item_id = i.id WHERE o.user_id = '$user_id' && o.status=1 ";
           $sqlrun=mysqli_query($conn,$sql);
           while ($row = mysqli_fetch_array($sqlrun)) {
               ?>
@@ -107,5 +107,4 @@ if(isset($_SESSION['review'])){
           }
 
           ?>
-          <h3>Hello</h3>
       </div>

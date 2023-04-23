@@ -25,7 +25,7 @@ $photo_new_name= rand(10,11111).$filename;
 
 // Check if the file extension is allowed
     if (in_array($file_ext, $allowed_exts)) {
-        echo "nice";
+//        echo "nice";
 //        die();
     }
     else{

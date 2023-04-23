@@ -100,7 +100,7 @@ include 'header.php';
         </form>
             <p>We would like hearfrom you concerning the foods you have previously bought</p>
             <div class="d-flex mt-4 flex-column align-items-center justify-content-center">
-            <a href="reviews.php" class="btn btn-success btn-sm p-1 w-75">review now</a>
+            <a href="reviews.php" class="btn btn-danger btn-sm p-1 w-75">review now</a>
             </div>
         </div>
     </div>

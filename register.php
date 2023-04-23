@@ -25,20 +25,20 @@
             ?>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="text" required="" maxlength="20" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;"type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;"type="email" required="" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="password" name="password" class="form-control" id="exampleInputPassword1">
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="password" required name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="password" name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="password" required name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
 
 

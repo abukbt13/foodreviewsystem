@@ -24,6 +24,7 @@
                     die();
                 }
                 else {
+                    $password = md5($_POST['password']);
                     $save = "insert into users (username,email,password) values('$username','$email','$password')";
                     $res = mysqli_query($conn, $save);
                     if ($res) {

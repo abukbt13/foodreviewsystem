@@ -35,7 +35,7 @@ border: 2px solid #ddd;
     <div style="background: #7C125; padding-left: 4rem;">
         <div class="tems">
 
-        <h2 style="text-align: center;">Orders from '.date('d-m-Y', strtotime($from)).' to '.date('d-m-Y', strtotime($to)).'</h2>
+        <h2 style="text-align: center;">Reviews  from '.date('d-m-Y', strtotime($from)).' to '.date('d-m-Y', strtotime($to)).'</h2>
         
         <table style="border-collapse: collapse; border: 2px solid #6AE512">
             <thead>
