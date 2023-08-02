@@ -7,11 +7,11 @@
 </head>
 <?php include 'header.php'; ?>
 <body style="background-size: cover;background-image: url('Foods/fooditems/2865fgcjnf.jpeg');">
-<div class="row d-flex align-items-center justify-content-center">
+<div class="row m-1 d-flex align-items-center justify-content-center">
 
-    <div  style="width: 23rem;" class=" bg-white pt-5 mt-4 mb-3 rounded">
+    <div  style="width: 23rem;" class=" border bg-white pt-5 mt-4 mb-3 rounded">
         <form action="processor.php" method="post">
-            <h2 class="text-center text-info"> Register Here</h2>
+            <h2 class="text-center"> Register </h2>
             <?php
             session_start();
             if(isset($_SESSION['register'])){
@@ -25,24 +25,24 @@
             ?>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="text" required="" maxlength="20" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input  type="text" required="" maxlength="20" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;"type="email" required="" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" required="" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="password" required name="password" class="form-control" id="exampleInputPassword1">
+                <input  type="password" required name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
-                <input style="border:none; border-bottom: 2px solid #00A8FF; border-radius: 0px;" type="password" required name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input  type="password" required name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
 
 
-            <button style="background: #ddd;" type="submit" name="register" class="btn  w-100">Register</button>
+            <button  type="submit" name="register" class="btn btn-outline-primary  w-100">Register</button>
 
         </form>
         <p class="text-center text-uppercase" >Already have an account? <a  href="login.php">Click here</a></p>

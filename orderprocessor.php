@@ -18,7 +18,7 @@ if(isset($_POST['add_order'])){
     $sqlrun=mysqli_query($conn,$sql);
     if($sqlrun){
 //        session_start();
-        $_SESSION['order']='Added to well cart successfully';
+        $_SESSION['order']='Order has been successfully added to cart';
         header('Location:food.php');
     }
 }
