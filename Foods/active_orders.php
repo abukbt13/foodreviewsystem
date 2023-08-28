@@ -84,7 +84,7 @@ include '../connection.php';
                     <td><?php echo date('H:i:s', strtotime($rows['time'] . ' +1 hour')) ?></td>
 
                     <td>
-                        <a class="btn btn-success" href="http://localhost:81/foodreviewsystem/Foods/view_orders.php?transaction_id=<?php echo $rows['transaction_id']?>&email=<?php echo $rows['email']?>&viewdetails=">View</a>
+                        <a class="btn btn-success" href="view_orders.php?transaction_id=<?php echo $rows['transaction_id']?>&email=<?php echo $rows['email']?>&viewdetails=">View</a>
                 </tr>
                 <?php
             }

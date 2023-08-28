@@ -85,7 +85,7 @@ include 'header.php';
     <style>
         .body{
             height: 90vh;
-            background-color:#ffD8D7;
+            background-color:blue;
             padding:0rem 0rem 0rem 2rem;
         }
         .main_content{

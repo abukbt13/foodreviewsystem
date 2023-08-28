@@ -6,15 +6,12 @@ require_once 'vendor/autoload.php';
 $data="select * from reviews ";
 $datarun=mysqli_query($conn,$data);
 $rows=mysqli_fetch_all($datarun,MYSQLI_ASSOC);
-
-
-
-
-
 use Dompdf\Dompdf;
-$html='<h2 style="font-size: 22px; text-align: center;text-transform: uppercase;">List Reviews</h2>';
 
-$html .= '<table style="border:2px solid blue;border-collapse: collapse; margin-left: 7rem;background: burlywood;">   
+
+$html='<div style="background:green; font-size: 21px;">';
+$html='<h2 style="font-size: 22px; text-align: center;text-transform: uppercase;">List Reviews</h2>';
+$html .= '<table style="border:2px solid blue;margin-right1rem; font-size19px;border-collapse: collapse; margin-left: 7rem;background: burlywood;">   
             <style>
             th,td{
             border: 2px solid blue;
@@ -43,6 +40,7 @@ foreach ($rows as $row){
 </tr>';
 }
 $html .= '</table>';
+$html .= '</div>';
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();
 $dompdf->loadHtml($html);
